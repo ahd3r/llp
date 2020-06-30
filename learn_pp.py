@@ -2076,5 +2076,76 @@
 
 # --------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# OOP Metaclasses
+
+
+# @property
+# def add_getter(self):
+#     # very dangerouse operation, but I am sure that everything will be okay, since control the situation, in the prod do not do it
+#     return self.xx + self.x
+
+# def add_attr(self):
+#     self.xx = 5
+
+# # In Python exit several way to create a class: one with class keyword and the second one is though 'type' function
+# # The 'type' function somehow can tell us a type of value, and create a class itself
+# # So I think, 'type' function can define base object in app, and this is what class actually need and do by this 'type' function
+# Test1 = type('Test1', (), {'x': 3, 'add_attr': add_attr, 'sum_it': add_getter})
+
+# class Test2:
+#     def __init__(self):
+#         self.x = 3
+
+# # Test1 and Test2 extremely equivalent as a class (but attr different), besides with class keyword IDE can show you hint
+# t1 = Test1()
+# t2 = Test2()
+# print(t1.x)
+# t1.add_attr()
+# print(t1.xx)
+# print(t1.sum_it)
+# print(t2.x)
+
+# # Since geting type of Test2, which was created via class keyword, return <class 'type'>, then I believe under the hood class uses 'type' function
+# print(type(Test1()))
+# print(type(type(Test1())))  # also the same as 'type(Test1)' it can be because every 'type(base_obj)' return <class 'type'>
+# print(type(Test1))
+# print(type(Test2))
+
+
+# class MetaClass(type):  # extend  redefine __new__ method, to get 'self', instead of 'cls', it is a good practice (maybe)
+#     # In Meta is a bad practice change method or attr name, since hints will lie you
+#     # Meta in Python work in the way, where you can define extra attr or extend from some another class, here is not some hided fields, to which you can get access through some module, like in JS is a reflect-metadata, in Python it is in class itself
+#     def __new__(self, class_name, extended, attributes):  # __new__ method call before __init__, but as you see, after create an instace
+#         print(self)  # self here is a MetaClass
+#         attributes['__analyse__'] = True
+#         return type(class_name, extended, attributes)
+
+# class Some(metaclass=MetaClass):
+#     def __init__(self, one, two):
+#         self.first = one
+#         self.second = two
+
+#     def print_attr(self):
+#         res = [res_key for res_key in filter(lambda x: not x.startswith(
+#             '__') and not x.endswith('__'), self.__dict__.keys())]
+#         print(res)
+
+# s = Some(11, 22)
+# s2 = type('Some2', (), {'a': 5, 'b': 6})()  # Class for compare
+# s.print_attr()
+# print(s.__dict__)
+
+# def anls(o):
+#     try:
+#         if o.__analyse__ == True:
+#             print(sum(o.__dict__.values()))
+#     except AttributeError:  # just ignore if do not exist field '__analyse__'
+#         pass
+
+# anls(s)
+# anls(s2)
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # Coursehunters python algorithms №1
 # class Unique():

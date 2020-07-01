@@ -2111,12 +2111,19 @@
 # print(type(Test1))
 # print(type(Test2))
 
+# # type class is inherit from each created class by default, I dunno why we need to do it manually, maybe it's just a good practice for something
+# # mate functionality allow us to reassign __call__, __new__ and __init__ dunder method
+# # __call__ allow as to create a class which is Singleton (since it works, when use class callable) (get *args and **kwargs)
+# # __new__ allow as to reassign class itself, since call before initialization instance (get class_name, extended_class, attribute_instance)
+# # __init__ allow as to reassign property of instance, since call in the initialization instance
 
 # class MetaClass(type):  # extend  redefine __new__ method, to get 'self', instead of 'cls', it is a good practice (maybe)
 #     # In Meta is a bad practice change method or attr name, since hints will lie you
 #     # Meta in Python work in the way, where you can define extra attr or extend from some another class, here is not some hided fields, to which you can get access through some module, like in JS is a reflect-metadata, in Python it is in class itself
 #     def __new__(self, class_name, extended, attributes):  # __new__ method call before __init__, but as you see, after create an instace
-#         print(self)  # self here is a MetaClass
+#         # # This is the same
+#         # print(self)  # self here is a MetaClass
+#         # print(cls)  # cls here is a MetaClass
 #         attributes['__analyse__'] = True
 #         return type(class_name, extended, attributes)
 

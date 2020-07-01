@@ -2147,5 +2147,60 @@
 
 # --------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# (( Mistakes ))
+
+# just describe a mistake, which you may do:
+
+# 1. Call module name as existing one
+# 2. Call variable name as existing one, which reassign functionality existing, since in Python do not exist constant variable
+# 3. Do not pass in function default arguments, which is immutable, for example:
+
+# # In the past it declare default value only once, and then set to variable link of created value, and use it as default link in memory to value, so that's why when we execute function twice with default value it works with the not defined value
+# # But now it defines and not change, since it concatenates, that means not mutate entering list, I think it works so for immutable in Python
+# def add_U(user, list_U=['Someone first']):
+#     # do not mutate list
+#     if isinstance(user, list):
+#         return list_U + user
+#     return list_U + [user]
+
+#     # # mutate list
+#     # if isinstance(user, list):
+#     #     for u in user:
+#     #         list_U.append(u)
+#     # else:
+#     #     list_U.append(user)
+#     # return list_U
+
+# users = ['Elon Mask', 'Bogdan Paranitsa', 'Bart Wood']
+# print(add_U('Andrii Statsenko', users))
+# print(add_U('Bill Gates'))
+# print(add_U(['Every Masons', 'Illuminates']))
+
+
+# # One more example with default args:
+# var = 1
+
+# def get_variable():
+#     return var
+
+# def increment_var(var=get_variable()):  # as you already know, 'var' defines only once, what means 'get_variable()' executes only once
+#     var += 1
+#     return var
+
+# print(increment_var())  # var is 2
+# var = 100
+# print(increment_var())  # var is 2 again, but expect 101
+# print(get_variable())  # 100
+# print(increment_var())
+
+# To fix that all, you just need to define variable in every execution of function, for this just define default args as None (as not required, and then in execution defines for them value)
+
+# 4. zip, map, filter,reduce and so on returns a generator, that means if we iterator through them, it will not iterate again, his end value was achieved, so it is the end, now it will return void
+# If you need a result of some of this function, just make it result = list(generator)
+
+# 5. Using * in import, it is mistake because it may be hard to debag, since something can be overwrite
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # Coursehunters python algorithms №1
 # class Unique():
